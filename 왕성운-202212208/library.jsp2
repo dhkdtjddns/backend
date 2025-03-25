@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>도서관 회원가입 정보</title>
+</head>
+<body>
+    <h2>도서관 회원가입 정보</h2>
+
+    <%
+        // 폼에서 넘어온 정보 받기
+        String username = request.getParameter("username");
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+        String card_number = request.getParameter("card_number");
+        String favorite_genre = request.getParameter("favorite_genre");
+        String newsletter = request.getParameter("newsletter");
+
+        // 뉴스레터 구독 여부 처리
+        String newsletterStatus = (newsletter != null) ? "구독함" : "구독하지 않음";
+    %>
+
+    <p>회원 이름: <%= username %></p>
+    <p>이메일: <%= email %></p>
+    <p>전화번호: <%= phone %></p>
+    <p>대출 카드 번호: <%= card_number %></p>
+    <p>선호하는 도서 장르: <%= favorite_genre %></p>
+    <p>뉴스레터 구독 여부: <%= newsletterStatus %></p>
+
+</body>
+</html>
