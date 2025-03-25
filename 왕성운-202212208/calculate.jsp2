@@ -1,0 +1,38 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학생 점수 결과</title>
+</head>
+<body>
+    <h2>학생 점수 결과</h2>
+
+    <%
+        // 폼에서 넘어온 점수 값 받기
+        String korStr = request.getParameter("kor");
+        String engStr = request.getParameter("eng");
+        String mathStr = request.getParameter("math");
+
+        // 점수 변환
+        int kor = Integer.parseInt(korStr);
+        int eng = Integer.parseInt(engStr);
+        int math = Integer.parseInt(mathStr);
+
+        // 총점과 평균 계산
+        int total = kor + eng + math;
+        float avg = total / 3.0f;
+
+        // 평균을 소수점 2자리로 포맷
+        String avgFormatted = String.format("%.2f", avg);
+    %>
+
+    <p>국어 점수: <%= kor %></p>
+    <p>영어 점수: <%= eng %></p>
+    <p>수학 점수: <%= math %></p>
+    <p>총점: <%= total %></p>
+    <p>평균: <%= avgFormatted %></p>
+
+</body>
+</html>
